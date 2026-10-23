@@ -1,0 +1,165 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Customer",
+      "email": "customer@example.com",
+      "password": "123456",
+      "role": "Customer",
+      "phone": "0901234567",
+      "address": "123 Main Street, Can Tho"
+    },
+    {
+      "id": 2,
+      "name": "Sarah Admin",
+      "email": "admin@example.com",
+      "password": "123456",
+      "role": "Admin",
+      "phone": "0909999999",
+      "address": "MoodTea Headquarters"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Milk Tea",
+      "description": "Classic creamy milk tea drinks"
+    },
+    {
+      "id": 2,
+      "name": "Fruit Tea",
+      "description": "Refreshing natural fruit teas"
+    },
+    {
+      "id": 3,
+      "name": "Coffee",
+      "description": "Rich coffee drinks for high focus"
+    },
+    {
+      "id": 4,
+      "name": "Toppings",
+      "description": "Extra chewy toppings and creams"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Brown Sugar Bubble Milk Tea",
+      "description": "Sweet caramelized brown sugar pearls with fresh creamy milk tea.",
+      "price": 4.5,
+      "image": "https://images.unsplash.com/photo-1558857563-b371033873b8?w=500&auto=format&fit=crop&q=60",
+      "category": "Milk Tea",
+      "mood": "Happy",
+      "status": "Active",
+      "rating": 4.9,
+      "isPopular": true,
+      "isNew": false
+    },
+    {
+      "id": 2,
+      "name": "Honey Chamomile Oolong Tea",
+      "description": "Calming floral oolong tea blended with pure wild honey.",
+      "price": 4,
+      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&auto=format&fit=crop&q=60",
+      "category": "Fruit Tea",
+      "mood": "Relax",
+      "status": "Active",
+      "rating": 4.8,
+      "isPopular": true,
+      "isNew": true
+    },
+    {
+      "id": 3,
+      "name": "Sea Salt Caramel Latte",
+      "description": "Bold espresso topped with savory sea salt cream to boost your focus.",
+      "price": 5,
+      "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&auto=format&fit=crop&q=60",
+      "category": "Coffee",
+      "mood": "Focus",
+      "status": "Active",
+      "rating": 4.7,
+      "isPopular": true,
+      "isNew": false
+    },
+    {
+      "id": 4,
+      "name": "Matcha Cheese Foam Smoothie",
+      "description": "Premium Japanese matcha blended with ice and rich cheese foam.",
+      "price": 5.5,
+      "image": "https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=500&auto=format&fit=crop&q=60",
+      "category": "Milk Tea",
+      "mood": "Energetic",
+      "status": "Active",
+      "rating": 4.9,
+      "isPopular": false,
+      "isNew": true
+    },
+    {
+      "id": 5,
+      "name": "Peach Lemongrass Citrus Tea",
+      "description": "Zesty and fruity iced tea with crunchy peach slices.",
+      "price": 4.2,
+      "image": "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=500&auto=format&fit=crop&q=60",
+      "category": "Fruit Tea",
+      "mood": "Happy",
+      "status": "Active",
+      "rating": 4.6,
+      "isPopular": false,
+      "isNew": true
+    }
+  ],
+  "cart": [],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "shippingName": "John Customer",
+      "phone": "0901234567",
+      "address": "123 Main Street, Can Tho",
+      "note": "Less ice, 50% sugar",
+      "items": [
+        {
+          "productId": 1,
+          "name": "Brown Sugar Bubble Milk Tea",
+          "price": 4.5,
+          "quantity": 2,
+          "size": "M",
+          "topping": "Black Pearl"
+        }
+      ],
+      "subtotal": 9,
+      "shippingFee": 1.5,
+      "total": 10.5,
+      "status": "Completed",
+      "createdAt": "2026-10-22"
+    },
+    {
+      "userId": 1,
+      "shippingName": "John Customer",
+      "phone": "0901234567",
+      "address": "123 Main Street, Can Tho",
+      "note": "",
+      "items": [
+        {
+          "userId": 1,
+          "productId": 1,
+          "name": "Brown Sugar Bubble Milk Tea",
+          "price": 4.5,
+          "image": "https://images.unsplash.com/photo-1558857563-b371033873b8?w=500&auto=format&fit=crop&q=60",
+          "size": "M",
+          "sugar": "100%",
+          "ice": "50%",
+          "topping": "None",
+          "quantity": 17,
+          "id": 1
+        }
+      ],
+      "subtotal": 76.5,
+      "shippingFee": 1.5,
+      "total": 78,
+      "status": "Pending",
+      "createdAt": "2026-10-21",
+      "id": 2
+    }
+  ]
+}
