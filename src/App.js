@@ -14,6 +14,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import MyOrders from "./pages/MyOrders";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/menu" element={<Menu />} />
             <Route path="/products/:id" element={<ProductDetails />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
             <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />

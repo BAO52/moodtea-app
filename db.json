@@ -17,6 +17,15 @@
       "role": "Admin",
       "phone": "0909999999",
       "address": "MoodTea Headquarters"
+    },
+    {
+      "name": "on bao",
+      "email": "baoogce5206@gmail.com",
+      "password": "123456",
+      "role": "Customer",
+      "phone": "",
+      "address": "",
+      "id": 3
     }
   ],
   "categories": [
@@ -160,6 +169,47 @@
       "status": "Pending",
       "createdAt": "2026-10-21",
       "id": 2
+    },
+    {
+      "userId": 3,
+      "shippingName": "on bao",
+      "phone": "0919387318",
+      "address": "lx ag",
+      "note": "....",
+      "items": [
+        {
+          "userId": 3,
+          "productId": 1,
+          "name": "Brown Sugar Bubble Milk Tea",
+          "price": 4.5,
+          "image": "https://images.unsplash.com/photo-1558857563-b371033873b8?w=500&auto=format&fit=crop&q=60",
+          "size": "M",
+          "sugar": "100%",
+          "ice": "100%",
+          "topping": "None",
+          "quantity": 1,
+          "id": 1
+        },
+        {
+          "userId": 3,
+          "productId": 2,
+          "name": "Honey Chamomile Oolong Tea",
+          "price": 4,
+          "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&auto=format&fit=crop&q=60",
+          "size": "M",
+          "sugar": "100%",
+          "ice": "100%",
+          "topping": "None",
+          "quantity": 1,
+          "id": 2
+        }
+      ],
+      "subtotal": 8.5,
+      "shippingFee": 1.5,
+      "total": 10,
+      "status": "Pending",
+      "createdAt": "2026-10-26",
+      "id": 3
     }
   ]
 }
