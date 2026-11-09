@@ -27,28 +27,142 @@ function App() {
   return (
     <Router>
       <div className="d-flex flex-column min-vh-100">
-        <Navbar />
         <div className="flex-grow-1">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Navbar />
+                  <Home />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/menu"
+              element={
+                <>
+                  <Navbar />
+                  <Menu />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="/products/:id"
+              element={
+                <>
+                  <Navbar />
+                  <ProductDetails />
+                  <Footer />
+                </>
+              }
+            />
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
-            <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
-            <Route path="/checkout" element={<PrivateRoute><Checkout /></PrivateRoute>} />
-            <Route path="/my-orders" element={<PrivateRoute><MyOrders /></PrivateRoute>} />
-            <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+            <Route
+              path="/cart"
+              element={
+                <PrivateRoute>
+                  <>
+                    <Navbar />
+                    <Cart />
+                    <Footer />
+                  </>
+                </PrivateRoute>
+              }
+            />
 
-            <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-            <Route path="/admin/products" element={<AdminRoute><AdminProducts /></AdminRoute>} />
-            <Route path="/admin/categories" element={<AdminRoute><AdminCategories /></AdminRoute>} />
-            <Route path="/admin/orders" element={<AdminRoute><AdminOrders /></AdminRoute>} />
-            <Route path="/admin/customers" element={<AdminRoute><AdminCustomers /></AdminRoute>} />
+            <Route
+              path="/checkout"
+              element={
+                <PrivateRoute>
+                  <>
+                    <Navbar />
+                    <Checkout />
+                    <Footer />
+                  </>
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/my-orders"
+              element={
+                <PrivateRoute>
+                  <>
+                    <Navbar />
+                    <MyOrders />
+                    <Footer />
+                  </>
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute>
+                  <>
+                    <Navbar />
+                    <Profile />
+                    <Footer />
+                  </>
+                </PrivateRoute>
+              }
+            />
+
+            <Route
+              path="/admin"
+              element={
+                <AdminRoute>
+                  <AdminDashboard />
+                </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin/products"
+              element={
+                <AdminRoute>
+                  <AdminProducts />
+                </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin/categories"
+              element={
+                <AdminRoute>
+                  <AdminCategories />
+                </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin/orders"
+              element={
+                <AdminRoute>
+                  <AdminOrders />
+                </AdminRoute>
+              }
+            />
+
+            <Route
+              path="/admin/customers"
+              element={
+                <AdminRoute>
+                  <AdminCustomers />
+                </AdminRoute>
+              }
+            />
           </Routes>
         </div>
-        <Footer />
       </div>
     </Router>
   );
