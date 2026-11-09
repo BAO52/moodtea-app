@@ -8,12 +8,14 @@ const MyOrders = () => {
 
   const fetchOrders = () => {
     axios
+
       .get(`http://localhost:3001/orders?userId=${user.id}`)
       .then((res) => setOrders(res.data));
   };
 
   useEffect(() => {
     fetchOrders();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCancelOrder = (orderId) => {

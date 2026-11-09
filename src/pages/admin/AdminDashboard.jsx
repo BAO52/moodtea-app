@@ -6,7 +6,11 @@ const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  // Kiểm tra cả localStorage và sessionStorage
+  const user =
+    JSON.parse(localStorage.getItem("user")) ||
+    JSON.parse(sessionStorage.getItem("user"));
 
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((res) => setProducts(res.data));
@@ -16,11 +20,27 @@ const AdminDashboard = () => {
   const pendingOrders = orders.filter((o) => o.status === "Pending").length;
   const totalRevenue = orders
     .filter((o) => o.status !== "Cancelled")
-    .reduce((sum, o) => sum + Number(o.total), 0);
+    .reduce((sum, o) => sum + Number(o.total || 0), 0);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     navigate("/login");
+  };
+
+  const getStatusBadge = (status) => {
+    switch (status) {
+      case "Completed":
+        return "bg-success";
+      case "Pending":
+        return "bg-warning text-dark";
+      case "Confirmed":
+        return "bg-info text-white";
+      case "Cancelled":
+        return "bg-danger";
+      default:
+        return "bg-secondary";
+    }
   };
 
   return (
@@ -43,7 +63,7 @@ const AdminDashboard = () => {
         <div className="col-md-9 col-lg-10">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h2 className="fw-bold text-milk-tea mb-0">Admin Dashboard</h2>
-            <span className="fw-semibold">Admin: {user?.name}</span>
+            <span className="fw-semibold">Admin: {user?.name || "Administrator"}</span>
           </div>
 
           <div className="row g-3 mb-4">
@@ -77,28 +97,44 @@ const AdminDashboard = () => {
             <div className="col-lg-8">
               <div className="card card-custom p-4 shadow-sm">
                 <h5 className="fw-bold mb-3">Recent Orders</h5>
-                <table className="table align-middle">
-                  <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Customer</th>
-                      <th>Date</th>
-                      <th>Total</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {orders.slice(0, 5).map((o) => (
-                      <tr key={o.id}>
-                        <td className="fw-bold">#{o.id}</td>
-                        <td>{o.shippingName}</td>
-                        <td>{o.createdAt}</td>
-                        <td>${Number(o.total).toFixed(2)}</td>
-                        <td><span className="badge bg-secondary">{o.status}</span></td>
+                <div className="table-responsive">
+                  <table className="table align-middle">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {[...orders]
+                        .reverse()
+                        .slice(0, 5)
+                        .map((o) => (
+                          <tr key={o.id}>
+                            <td className="fw-bold">#{o.id}</td>
+                            <td>{o.shippingName}</td>
+                            <td>{o.createdAt}</td>
+                            <td>${Number(o.total || 0).toFixed(2)}</td>
+                            <td>
+                              <span className={`badge ${getStatusBadge(o.status)}`}>
+                                {o.status}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      {orders.length === 0 && (
+                        <tr>
+                          <td colSpan="5" className="text-center text-muted py-3">
+                            No orders yet.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
@@ -109,9 +145,14 @@ const AdminDashboard = () => {
                   {products.slice(0, 4).map((p) => (
                     <li key={p.id} className="list-group-item d-flex justify-content-between align-items-center px-0">
                       <span>{p.name}</span>
-                      <span className="fw-bold">${Number(p.price).toFixed(2)}</span>
+                      <span className="fw-bold text-milk-tea">${Number(p.price || 0).toFixed(2)}</span>
                     </li>
                   ))}
+                  {products.length === 0 && (
+                    <li className="list-group-item text-center text-muted px-0">
+                      No products available.
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
