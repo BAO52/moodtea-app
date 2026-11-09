@@ -64,7 +64,10 @@ const AdminProducts = () => {
 
   const [user, setUser] = useState(() => {
     try {
-      return JSON.parse(localStorage.getItem("user"));
+      return (
+        JSON.parse(localStorage.getItem("user")) ||
+        JSON.parse(sessionStorage.getItem("user"))
+      );
     } catch (error) {
       return null;
     }
@@ -90,6 +93,7 @@ const AdminProducts = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     setUser(null);
     navigate("/login");
   };

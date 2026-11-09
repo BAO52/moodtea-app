@@ -2,10 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+
+  const user =
+    JSON.parse(localStorage.getItem("user")) ||
+    JSON.parse(sessionStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     navigate("/login");
   };
 
@@ -17,12 +21,20 @@ const Navbar = () => {
         </Link>
 
         <div className="d-flex align-items-center gap-3 flex-wrap">
-          <Link className="nav-link text-white" to="/">Home</Link>
-          <Link className="nav-link text-white" to="/menu">Menu</Link>
+          <Link className="nav-link text-white" to="/">
+            Home
+          </Link>
+
+          <Link className="nav-link text-white" to="/menu">
+            Menu
+          </Link>
 
           {user && user.role === "Customer" && (
             <>
-              <Link className="nav-link text-white" to="/my-orders">My Orders</Link>
+              <Link className="nav-link text-white" to="/my-orders">
+                My Orders
+              </Link>
+
               <Link className="btn btn-pastel-pink btn-sm px-3" to="/cart">
                 Cart
               </Link>
@@ -40,6 +52,7 @@ const Navbar = () => {
               <Link className="btn btn-outline-light btn-sm" to="/profile">
                 Profile ({user.name})
               </Link>
+
               <button onClick={handleLogout} className="btn btn-danger btn-sm">
                 Logout
               </button>

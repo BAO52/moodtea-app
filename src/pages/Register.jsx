@@ -56,7 +56,9 @@ const Register = () => {
   return (
     <div className="container mt-5" style={{ maxWidth: "450px" }}>
       <div className="card card-custom p-4 shadow-sm">
-        <h3 className="fw-bold text-milk-tea text-center mb-4">Create Account</h3>
+        <h3 className="fw-bold text-milk-tea text-center mb-4">
+          Create Account
+        </h3>
 
         {error && <div className="alert alert-danger py-2">{error}</div>}
         {success && <div className="alert alert-success py-2">{success}</div>}
@@ -117,7 +119,10 @@ const Register = () => {
 
         <div className="text-center mt-3">
           <span className="text-muted">Already have an account? </span>
-          <Link to="/login" className="text-milk-tea fw-semibold text-decoration-none">
+          <Link
+            to="/login"
+            className="text-milk-tea fw-semibold text-decoration-none"
+          >
             Login here
           </Link>
         </div>
